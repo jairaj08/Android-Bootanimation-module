@@ -1,4 +1,4 @@
-# Cool Bootanimation Module Template
+# Bootanimation Module Template
 
 A minimal systemless overlay module for replacing Android's boot animation. It is intended for Magisk, KernelSU, and APatch module managers and does not modify or remount read-only system partitions.
 
@@ -13,17 +13,18 @@ A minimal systemless overlay module for replacing Android's boot animation. It i
 - A rooted Android device with Magisk, KernelSU, or APatch or any similar app.
 - A valid `bootanimation.zip`.
 
-## Installation
-1. Download the module ZIP release. Install it from a supported root manager. The included `META-INF` files also retain compatibility with recovery-based Magisk module installers.
-2. Open the root manager's module installer.
-3. Select the ZIP and install it.
-4. Reboot to apply the animation.
-
 ## Build or Replace the animation
 1. Extract the module ZIP.
 2. Place your custom `bootanimation.zip` in `common/`.
 3. Optionally place `bootaudio.mp3` in `common/`.
 4. Create the ZIP with `customize.sh`, `module.prop`, and `common/` at its root.
+
+## Installation
+1. Download the module ZIP release. 
+2. Open the root manager's module installer.
+3. Select the ZIP and install it.
+4. Reboot to apply the animation.
+
 
 The animation archive must contain a root-level `desc.txt` and one or more `part*` directories. Store (uncompressed) ZIP entries are recommended for boot-time performance. The installer validates the archive and aborts before installation if it is corrupt or lacks `desc.txt`.
 
@@ -36,9 +37,10 @@ The animation archive must contain a root-level `desc.txt` and one or more `part
 ## Compatibility Scope
 No bootanimation module can honestly guarantee every Android phone or ROM. A device may not use the AOSP `bootanimation` service, may select a vendor animation before overlays are mounted, or may enforce a custom SELinux policy. This template covers standard systemless overlay behavior on Android 10 through current Android releases, but proprietary ROM behavior may needs device-specific handling.
 
+# Create Custom bootanimation
+DM your video to Bootanimation bot: [@bootanimations_bot](https://t.me/bootanimations_bot) on telegram, it will give a direct flashable module for bootanimation.
 
 ## Credits
 - Creator: [Jairaj08](https://github.com/Jairaj08)
 - Bootanimation bot: [@bootanimations_bot](https://t.me/bootanimations_bot)
 - Support group: [@bootanimations_group](https://t.me/bootanimations_group)
-- License: Creative Commons Attribution 4.0 International (CC BY 4.0)
