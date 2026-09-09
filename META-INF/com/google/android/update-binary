@@ -1,0 +1,24 @@
+#!/sbin/sh
+# Magisk module installer entry point for recovery compatibility.
+# Magisk replaces this file with its current installer when installed from the app.
+
+umask 022
+OUTFD=$2
+ZIPFILE=$3
+
+ui_print() { echo "$1"; }
+
+require_new_magisk() {
+    ui_print "*******************************"
+    ui_print " Please install Magisk v20.4+! "
+    ui_print "*******************************"
+    exit 1
+}
+
+MAGISK_UTIL=/data/adb/magisk/util_functions.sh
+mount /data 2>/dev/null
+[ -f "$MAGISK_UTIL" ] || require_new_magisk
+. "$MAGISK_UTIL"
+[ "${MAGISK_VER_CODE:-0}" -lt 20400 ] && require_new_magisk
+install_module
+exit 0
