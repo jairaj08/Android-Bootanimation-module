@@ -10,7 +10,7 @@ A minimal systemless overlay module for replacing Android's boot animation. It i
 - Lets the root manager own installation and uninstallation; no files are deleted from the real system.
 
 ## Requirements
-- A rooted Android device with Magisk, KernelSU, or APatch.
+- A rooted Android device with Magisk, KernelSU, or APatch or any similar app.
 - A valid `bootanimation.zip`.
 
 ## Installation
@@ -19,7 +19,7 @@ A minimal systemless overlay module for replacing Android's boot animation. It i
 3. Select the ZIP and install it.
 4. Reboot to apply the animation.
 
-## Build or Replace the Payload
+## Build or Replace the animation
 1. Extract the module ZIP.
 2. Place your custom `bootanimation.zip` in `common/`.
 3. Optionally place `bootaudio.mp3` in `common/`.
@@ -29,15 +29,13 @@ The animation archive must contain a root-level `desc.txt` and one or more `part
 
 ## Troubleshooting
 - **Black screen or animation does not start:** Check that `desc.txt` dimensions match the frames, frame names are valid, and the archive contains `part0`, `part1`, etc. Recreate it using Store compression.
-- **Stock animation still appears:** The ROM may use a proprietary boot animation service or an unlisted path. Inspect the ROM's animation location and add it to `BA_MEDIA_PATHS` in `customize.sh`. Do not blindly remount or write to `/system`.
+- **Stock animation still appears:** The ROM may use a proprietary boot animation service or an unlisted path. Inspect the ROM's animation location and add it to `BA_MEDIA_PATHS` in `customize.sh`. Do not blindly remount or write to `/system`. Reach to me on support group mentioned below, I would love to help.
 - **No boot audio:** Audio is ROM/device dependent. Some Android builds disable boot sound or use a vendor-specific filename/service; this module cannot enable a disabled service.
-- **Install error:** Install through the manager's module installer. `module.prop` must be at the ZIP root, and `META-INF/com/google/android/` must be retained when installing through recovery.
+- **Install error:** Install through the manager's module installer. `module.prop` must be at the ZIP root, do not flash using recovery.
 
 ## Compatibility Scope
-No bootanimation module can honestly guarantee every Android phone or ROM. A device may not use the AOSP `bootanimation` service, may select a vendor animation before overlays are mounted, or may enforce a custom SELinux policy. This template covers standard systemless overlay behavior on Android 10 through current Android releases, but proprietary ROM behavior still needs device-specific handling.
+No bootanimation module can honestly guarantee every Android phone or ROM. A device may not use the AOSP `bootanimation` service, may select a vendor animation before overlays are mounted, or may enforce a custom SELinux policy. This template covers standard systemless overlay behavior on Android 10 through current Android releases, but proprietary ROM behavior may needs device-specific handling.
 
-## Changelog
-- **4.2 (2026-09-09):** Reworked installation around systemless overlays; removed direct partition writes, hardcoded SELinux contexts, fragile uninstall tracking, and legacy payload search paths. Added ZIP and `desc.txt` validation, safer path detection, modern metadata, and documentation of ROM-specific limits.
 
 ## Credits
 - Creator: [Jairaj08](https://github.com/Jairaj08)
